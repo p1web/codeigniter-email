@@ -83,12 +83,7 @@ var base_url = '<?= base_url() ?>';
 				<div id="error_message"></div>
 			
 				</div>
-				</div>
-
-
-				<div id="map" class="colorlib-map">
-					<iframe width="100%" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJjbOaMz5ofDkRUFjngVDsBlo&key=AIzaSyCaSIsq3EL36m9TmYPoxZYK3SwdASf-m_Y" allowfullscreen></iframe>
-				</div>					
+				</div>			
 				
 			</div>
 		</div>
