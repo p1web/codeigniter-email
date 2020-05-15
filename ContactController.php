@@ -1,38 +1,16 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-
-
-class ContactController extends CI_Controller {
-
+class ContactController extends CI_Controller { 
     
-
     function __construct() {
-
         parent::__construct();
-        
         date_default_timezone_set("Asia/Calcutta");
-
-        $this->load->model("AdminModel");
-        $this->load->model("HomeModel");
-
     }
 
-
-    function template($page_name, $pagedata, $footerdata)
-    {
-         
-         $this->load->view('web/header');
-         $pagedata['videos'] = $this->HomeModel->fetch_videos();
-         $this->load->view($page_name, $pagedata);
-         $this->load->view('web/footer');
-    }
-
-   
+ 
     function contact(){
-
-        $pagedata   =   Array();  
         
-        $this->template('web/contact', $pagedata, 'NULL');
+        $this->load->view('contact');
 
     }
      
@@ -86,58 +64,6 @@ class ContactController extends CI_Controller {
 
          echo json_encode($result);
          
-    } 
-
-    function submit_contact(){   
-
-        $from = trim($_POST['email']);
-        $fname = trim($_POST['fname']);
-        $lname = trim($_POST['lname']);
-        $subject = trim($_POST['subject']);
-        $message = trim($_POST['message']);      
-
-        $this->load->library('phpmailer_lib');
-        $mail = $this->phpmailer_lib->load();
-
-        // SMTP configuration
-        $mail->isSMTP();
-        $mail->Host     = 'smtp.hostinger.in';
-        $mail->SMTPAuth = true;
-        $mail->Username = 'hamdard@p1web.site';
-        $mail->Password = 'Pk*I&#K#';
-        $mail->SMTPSecure = 'tls';
-        $mail->Port     = 587;
-        
-        $mail->setFrom($from, $fname);
-        $mail->addReplyTo($from, 'hamdard');
-        
-        // Add a recipient
-        $mail->addAddress('pvndb2015@gmail.com');
-        
-        // Add cc or bcc 
-        // $mail->addCC('cc@example.com');
-        // $mail->addBCC('bcc@example.com');
-        
-        // Email subject
-        $mail->Subject = $subject;
-        
-        // Set email format to HTML
-        $mail->isHTML(true);
-        
-        // Email body content
-        $mailContent = $message;
-        $mail->Body = $mailContent;
-        
-        // Send email
-        if(!$mail->send()){
-            $result['error'] = 'Mailer Error: ' . $mail->ErrorInfo;
-        }else{
-            $result['error'] = 'Message has been sent';
-        }
-
-        echo json_encode($result);
-        
-    }
-   
+    }  
 
 }
