@@ -1,4 +1,4 @@
-# This is for how we can send simple php mail using codeigniter framework
+# This is for how we can send simple php mail using codeigniter framework and ajax
 
 1) copy ContactController.php file into controller folder
 2) copy contact.php file into view folder
